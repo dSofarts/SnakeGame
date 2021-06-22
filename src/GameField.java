@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class GameField extends JPanel {
     private final int SIZE = 320;
@@ -29,7 +30,16 @@ public class GameField extends JPanel {
         dots = 2;
         for (int i = 0; i < dots; i++) {
             x[i] = 48 - i * DOT_SIZE;
+            y[i] = 48;
         }
+        timer = new Timer(250, this);
+        timer.start();
+        createApple();
+    }
+
+    public void createApple() {
+        appleX = new Random().nextInt(20) * DOT_SIZE;
+        appleY = new Random().nextInt(20) * DOT_SIZE;
     }
     public void loadImages() {
         ImageIcon iia = new ImageIcon("apple.png");
