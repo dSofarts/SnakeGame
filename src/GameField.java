@@ -1,8 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class GameField extends JPanel {
+public class GameField extends JPanel implements ActionListener {
     private final int SIZE = 320;
     private final int DOT_SIZE = 16;
     private final int ALL_DOTS = 400;
@@ -41,10 +43,38 @@ public class GameField extends JPanel {
         appleX = new Random().nextInt(20) * DOT_SIZE;
         appleY = new Random().nextInt(20) * DOT_SIZE;
     }
+
     public void loadImages() {
         ImageIcon iia = new ImageIcon("apple.png");
         apple = iia.getImage();
         ImageIcon iid = new ImageIcon("dot.png");
         dot = iid.getImage();
+    }
+
+    public void move() {
+        for (int i = dots; i > 0; i--) {
+            x[i] = x[i - 1];
+            y[i] = y[i - 1];
+        }
+        if (left) {
+            x[0] -= DOT_SIZE;
+        }
+        if (right) {
+            x[0] += DOT_SIZE;
+        }
+        if (up) {
+            y[0] -= DOT_SIZE;
+        }
+        if (down) {
+            y[0] += DOT_SIZE;
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (inGame) {
+            move();
+        }
+        repaint();
     }
 }
