@@ -29,6 +29,8 @@ public class GameField extends JPanel implements ActionListener {
         setBackground(Color.black);
         loadImages();
         initGame();
+        addKeyListener(new FieldKeyListener());
+        setFocusable(true);
     }
     public void initGame() {
         dots = 2;
