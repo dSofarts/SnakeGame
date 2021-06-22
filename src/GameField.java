@@ -2,9 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameField extends JPanel {
-    private final int SIZE = 720;
+    private final int SIZE = 320;
     private final int DOT_SIZE = 16;
-    private final int ALL_DOTS = 2025;
+    private final int ALL_DOTS = 400;
     private Image dot;
     private Image apple;
     private int appleX;
@@ -23,6 +23,13 @@ public class GameField extends JPanel {
     public GameField() {
         setBackground(Color.black);
         loadImages();
+
+    }
+    public void initGame() {
+        dots = 2;
+        for (int i = 0; i < dots; i++) {
+            x[i] = 48 - i * DOT_SIZE;
+        }
     }
     public void loadImages() {
         ImageIcon iia = new ImageIcon("apple.png");
