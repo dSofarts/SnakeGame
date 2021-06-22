@@ -63,6 +63,10 @@ public class GameField extends JPanel implements ActionListener {
             for (int i = 0; i < dots; i++) {
                 g.drawImage(dot,x[i],y[i],this);
             }
+        } else {
+            String gameOver = "Game Over";
+            g.setColor(Color.white);
+            g.drawString(gameOver, 125, SIZE / 2);
         }
     }
 
